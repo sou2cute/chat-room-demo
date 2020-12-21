@@ -1,4 +1,22 @@
 import React, { useState } from 'react';
+import { Layout } from 'antd';
+import styled from 'styled-components';
+
+import './App.css';
+import Store from './Store';
+import DashBoard from './Dashboard';
+
+const { Header, Footer, Content } = Layout;
+
+const TestWrapper = styled(Footer)`
+  background: papayawhip;
+  text-align: center;
+  color: palevioletred;
+  button {
+    border: 2px solid palevioletred;
+    border-radius: 6px;
+  }
+`;
 
 function App() {
   const [message, setMessage] = useState('Empty Message.');
@@ -10,15 +28,24 @@ function App() {
   )
 
   return (
-    <div className="App">
-      <p>
-        Click to ping:
-        <button onClick={pingHandler}>PING</button>
-      </p>
-      <p>
-        {message}
-      </p>
-    </div>
+    <Layout className="App"  style={{ height: '100vh' }}>
+      <Header>
+        <div className="logo" />
+      </Header>
+      <Content>
+        <Store>
+          <DashBoard />
+        </Store>
+      </Content>
+      <TestWrapper>
+        <p>
+          Click to ping: <button onClick={pingHandler}>PING</button>
+        </p>
+        <p>
+          {message}
+        </p>
+      </TestWrapper>
+    </Layout>
   );
 }
 
