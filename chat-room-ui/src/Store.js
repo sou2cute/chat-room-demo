@@ -47,7 +47,7 @@ export default function Store(props) {
 
   if(!conn) {
     console.log('socket connecting...');
-    conn = new W3CWebSocket('ws://127.0.0.1:8080/ws');
+    conn = new W3CWebSocket('ws://192.168.99.100:8080/ws');
   };
   conn.onmessage = (message) => {
     // const data = JSON.parse(message.data);
