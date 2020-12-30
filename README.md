@@ -15,6 +15,9 @@ Open another terminal at the directory of chat-room-ui.
 Check the ip your docker located with `docker-machine ip`.  
 If that ip differed from 192.168.99.100, you have to change the code in client.
 
-## Reference
-[https://youtu.be/hiiaHyhhwBU]
-[https://github.com/gorilla/websocket/tree/master/examples/chat]
+## References
+Building a Live Chat App with React Tutorial [1]  
+Gorilla Websocket Chat Example [2]
+
+[1]: https://youtu.be/hiiaHyhhwBU  
+[2]: https://github.com/gorilla/websocket/tree/master/examples/chat
