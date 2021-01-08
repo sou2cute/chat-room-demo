@@ -21,7 +21,7 @@ const TestWrapper = styled(Footer)`
 function App() {
   const [message, setMessage] = useState('Empty Message.');
   const pingHandler = async () => (
-    fetch('http://192.168.99.100/ping')
+    fetch('/ping')
       .then(res => res.json())
       .then(json => setMessage(json.message))
       .catch(err => console.log(err))

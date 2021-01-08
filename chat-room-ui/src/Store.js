@@ -1,5 +1,4 @@
 import React, { createContext, useReducer } from 'react'
-import { w3cwebsocket as W3CWebSocket } from 'websocket';
 
 export const MessageContext = createContext();
 
@@ -47,7 +46,7 @@ export default function Store(props) {
 
   if(!conn) {
     console.log('socket connecting...');
-    conn = new W3CWebSocket('ws://192.168.99.100:8080/ws');
+    conn = new WebSocket(process.env.REACT_APP_WS_URL);
   };
   conn.onmessage = (message) => {
     // const data = JSON.parse(message.data);

@@ -18,6 +18,8 @@ If that ip differed from 192.168.99.100, you have to change the code in client.
 ## References
 Building a Live Chat App with React Tutorial [1]  
 Gorilla Websocket Chat Example [2]
+Dockerizing a React App [3]
 
 [1]: https://youtu.be/hiiaHyhhwBU  
 [2]: https://github.com/gorilla/websocket/tree/master/examples/chat
+[3]: https://mherman.org/blog/dockerizing-a-react-app/
