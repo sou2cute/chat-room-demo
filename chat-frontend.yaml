@@ -33,7 +33,3 @@ spec:
       containers:
       - name: chat-room-ui
         image: chat-room-ui
-        lifecycle:
-          preStop:
-            exec:
-              command: ["/usr/sbin/nginx","-s","quit"]
