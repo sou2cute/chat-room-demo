@@ -3,6 +3,7 @@ import { Layout, Menu, List, Typography, Input } from 'antd';
 import styled from 'styled-components';
 
 import { MessageContext } from './Store';
+import { EntryModal } from './EntryModal';
 
 const { Content, Sider } = Layout;
 
@@ -22,16 +23,21 @@ const StyledContent = styled(Content)`
 export default function DashBoard() {
 	const { allChats, sendWSMessage } = useContext(MessageContext);
 	const [text, setText] = useState('');
-
+	const [userName, setUserName] = useState('guest');
 	const [activeTopic, setActiveTopic] = useState('general');
 
 	const handleSubmit = (e) => {
-		sendWSMessage(e.target.value);
+		sendWSMessage({
+			'from': userName,
+			'msg': e.target.value,
+			'topic': activeTopic,
+		});
 		setText('');
 	}
 
 	return (
 		<StyledLayout>
+			<EntryModal setUserName={setUserName} />
 			<Sider width={200}>
 				<Menu
 					mode="inline"
@@ -49,7 +55,7 @@ export default function DashBoard() {
 			</Sider>
 			<StyledContent>
 				<List
-					header={<div>[CHAT_ROOM_TITLE]</div>}
+					header={<div>{activeTopic.toUpperCase()}</div>}
 					bordered
 					dataSource={allChats[activeTopic]}
 					renderItem={({ from, msg }) => (

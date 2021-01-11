@@ -4,11 +4,11 @@ export const MessageContext = createContext();
 
 const initState = {
   general: [
-    { from: 'Jason', msg: 'hi' },
-    { from: 'Aaron', msg: 'Hello' }
+    { from: 'Nick', msg: "Hi, I'm Nick." },
+    { from: 'Nick', msg: 'Feel free to talk.' }
   ],
-  topic2: [
-    { from: 'Aaron', msg: "I'm here." }
+  cvs: [
+    { from: 'Aaron', msg: "I love cvs so much." }
   ]
 };
 
@@ -33,7 +33,7 @@ function sendWSMessage(msg) {
     console.log('No web socket connection');
     return;
   }
-  conn.send(msg);
+  conn.send(JSON.stringify(msg));
 }
 
 let conn;
@@ -49,16 +49,16 @@ export default function Store(props) {
     conn = new WebSocket(process.env.REACT_APP_WS_URL);
   };
   conn.onmessage = (message) => {
-    // const data = JSON.parse(message.data);
+    const data = JSON.parse(message.data);
 
     // test function
-    console.log('[INFO]', message);
+    console.log('[INFO]', data);
     dispatch({
       type: 'RECEIVE_MESSAGE',
       payload: {
-        'from': 'admin',
-        'msg': message.data,
-        'topic': 'general'
+        'from': data.from,
+        'msg': data.msg,
+        'topic': data.topic
       }
     });
   };
