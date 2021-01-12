@@ -45,7 +45,7 @@ export default function DashBoard() {
 					style={{ height: '100%' }}
 					onSelect={({ selectedKeys }) => {
 						console.log(selectedKeys);
-						setActiveTopic(selectedKeys);
+						setActiveTopic(selectedKeys.toString());
 					}}
 				>
 					{Object.keys(allChats).map((elem) => (
