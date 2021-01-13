@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Layout, Menu, List, Typography, Input } from 'antd';
 import styled from 'styled-components';
+import InfiniteScroll from 'react-infinite-scroller';
 
 import { MessageContext } from './Store';
 import { EntryModal } from './EntryModal';
@@ -18,6 +19,25 @@ const StyledContent = styled(Content)`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+`
+
+const ChatHeader = styled.div`
+	padding: 0 24px;
+`
+
+const ChatList = styled(List)`
+	width: 100%;
+	padding-bottom: 6px;
+	height: clac(100% - 15px);
+	overflow: scroll;
+	overflow-x: hidden;
+	
+	display: flex;
+	flex-direction: column-reverse;
+`
+
+const ChatInput = styled(Input)`
+
 `
 
 export default function DashBoard() {
@@ -54,8 +74,7 @@ export default function DashBoard() {
 				</Menu>
 			</Sider>
 			<StyledContent>
-				<List
-					header={<div>{activeTopic.toUpperCase()}</div>}
+				<ChatList
 					bordered
 					dataSource={allChats[activeTopic]}
 					renderItem={({ from, msg }) => (
@@ -64,7 +83,12 @@ export default function DashBoard() {
 						</List.Item>
 					)}
 				/>
-				<Input value={text} onChange={(e) => setText(e.target.value)} onPressEnter={handleSubmit} />
+				{/* <ChatHeader>{activeTopic.toUpperCase()}</ChatHeader> */}
+				<ChatInput
+					value={text}
+					onChange={(e) => setText(e.target.value)}
+					onPressEnter={handleSubmit}
+				/>
 			</StyledContent>
 		</StyledLayout>
 	)

@@ -44,7 +44,7 @@ export default function Store(props) {
   const [allChats, dispatch] = useReducer(reducer, initState);
 
   if (!conn) {
-    conn = new WebSocket(process.env.REACT_APP_DOCKER_WS);
+    conn = new WebSocket(process.env.REACT_APP_WEBSOCKET_URL);
   };
   conn.onmessage = (message) => {
     const data = JSON.parse(message.data);

@@ -8,6 +8,15 @@ import DashBoard from './Dashboard';
 
 const { Header, Footer, Content } = Layout;
 
+const StyledHeader = styled(Header)`
+  background: papayawhip;
+  p {
+    color: palevioletred;
+    font-size: 28px;
+    font-weight: bold;
+  }
+`
+
 const TestWrapper = styled(Footer)`
   background: papayawhip;
   text-align: center;
@@ -19,7 +28,7 @@ const TestWrapper = styled(Footer)`
 `;
 
 function App() {
-  const [message, setMessage] = useState('Empty Message.');
+  const [message, setMessage] = useState('Developed & deployed by 志中 & 柏瑜.');
   const pingHandler = async () => (
     fetch('/ping')
       .then(res => res.json())
@@ -29,9 +38,9 @@ function App() {
 
   return (
     <Layout className="App"  style={{ height: '100vh' }}>
-      <Header>
-        <div className="logo" />
-      </Header>
+      <StyledHeader>
+        <p>Real-time Chat</p>
+      </StyledHeader>
       <Content>
         <Store>
           <DashBoard />
