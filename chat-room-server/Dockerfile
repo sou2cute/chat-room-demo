@@ -1,7 +1,9 @@
+ARG PORT=8080
+
 FROM golang:1.15.6-alpine AS build
 
 RUN apk update && \
-    apk add --no-cache git
+    apk add --no-cache git alpine-sdk
 
 WORKDIR /src
 COPY go.* ./
@@ -13,5 +15,7 @@ FROM alpine:latest AS bin
 
 COPY --from=build /src/out/example .
 COPY --from=build /src/*html .
-EXPOSE 8080
+
+EXPOSE ${PORT}
+
 ENTRYPOINT ["./example"]
