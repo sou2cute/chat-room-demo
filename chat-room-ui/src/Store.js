@@ -37,16 +37,14 @@ function sendWSMessage(msg) {
 }
 
 let conn;
-// conn = new W3CWebSocket('ws://127.0.0.1:8080/ws');
 
 export default function Store(props) {
 
   // all chats & a function to update those chats
   const [allChats, dispatch] = useReducer(reducer, initState);
 
-  if(!conn) {
-    console.log('socket connecting...');
-    conn = new WebSocket(process.env.REACT_APP_WS_URL);
+  if (!conn) {
+    conn = new WebSocket(process.env.REACT_APP_DOCKER_WS);
   };
   conn.onmessage = (message) => {
     const data = JSON.parse(message.data);
