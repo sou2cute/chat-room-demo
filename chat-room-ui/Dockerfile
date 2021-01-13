@@ -4,7 +4,7 @@ WORKDIR /app
 COPY ["package.json", "yarn.lock", "./"]
 RUN yarn --production --silent
 COPY . .
-RUN yarn build
+RUN yarn build:prod
 
 FROM nginx:stable-alpine
 
